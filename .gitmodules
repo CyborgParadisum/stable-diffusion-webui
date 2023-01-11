@@ -1,0 +1,40 @@
+#  ========== repositories ==============
+
+[submodule "repositories/stable-diffusion"]
+    url = https://github.com/CompVis/stable-diffusion.git
+    path = repositories/stable-diffusion
+
+[submodule "repositories/taming-transformers"]
+    url = https://github.com/CompVis/taming-transformers.git
+    path = repositories/taming-transformers
+
+[submodule "repositories/CodeFormer"]
+    url = https://github.com/sczhou/CodeFormer.git
+    path = repositories/CodeFormer
+
+[submodule "repositories/BLIP"]
+    url = https://github.com/salesforce/BLIP.git
+    path = repositories/BLIP
+
+[submodule "repositories/k-diffusion"]
+    url = https://github.com/crowsonkb/k-diffusion.git
+    path = repositories/k-diffusion
+
+[submodule "repositories/stable-diffusion-stability-ai"]
+    url = https://github.com/Stability-AI/stablediffusion.git
+    path = repositories/stable-diffusion-stability-ai
+
+[submodule "repositories/k-diffusioni"]
+    url = https://github.com/crowsonkb/k-diffusion.git
+    path = repositories/k-diffusion
+
+#  ========== extensions ==============
+
+[submodule "extensions/deforum-for-automatic1111-webui"]
+    url = https://github.com/deforum-art/deforum-for-automatic1111-webu.git
+    path = extensions/deforum-for-automatic1111-webui
+
+[submodule "extensions/stable-diffusion-webui-images-browser"]
+    url = https://github.com/yfszzx/stable-diffusion-webui-images-browser.git
+    path = extensions/stable-diffusion-webui-images-browser
+

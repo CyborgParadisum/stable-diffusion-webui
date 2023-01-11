@@ -65,7 +65,9 @@ git clone https://github.com/sczhou/CodeFormer.git repositories/CodeFormer
 git clone https://github.com/salesforce/BLIP.git repositories/BLIP
 
 # Install dependencies
+
 pip install -r requirements.txt
+pip install open-clip-torch==2.7.0
 
 # There's a bug in protobuf that causes errors when generating images.
 # Read: https://github.com/protocolbuffers/protobuf/issues/10571

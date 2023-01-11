@@ -3,7 +3,7 @@ __pycache__
 *.pth
 /ESRGAN/*
 /SwinIR/*
-/repositories
+#/repositories
 /venv
 /tmp
 /model.ckpt
@@ -28,7 +28,7 @@ notification.mp3
 /SwinIR
 /textual_inversion
 .vscode
-/extensions
+#/extensions
 /test/stdout.txt
 /test/stderr.txt
 
