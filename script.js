@@ -1,9 +1,10 @@
-function gradioApp(){
-    return document.getElementsByTagName('gradio-app')[0].shadowRoot;
+function gradioApp() {
+    const gradioShadowRoot = document.getElementsByTagName('gradio-app')[0].shadowRoot
+    return !!gradioShadowRoot ? gradioShadowRoot : document;
 }
 
 function get_uiCurrentTab() {
-    return gradioApp().querySelector('.tabs button:not(.border-transparent)')
+    return gradioApp().querySelector('#tabs button:not(.border-transparent)')
 }
 
 function get_uiCurrentTabContent() {
@@ -21,20 +22,20 @@ function onUiTabChange(callback){
     uiTabChangeCallbacks.push(callback)
 }
 
-function runCallback(x){
+function runCallback(x, m){
     try {
-        x()
+        x(m)
     } catch (e) {
         (console.error || console.log).call(console, e.message, e);
     }
 }
-function executeCallbacks(queue) {
-    queue.forEach(runCallback)
+function executeCallbacks(queue, m) {
+    queue.forEach(function(x){runCallback(x, m)})
 }
 
 document.addEventListener("DOMContentLoaded", function() {
     var mutationObserver = new MutationObserver(function(m){
-        executeCallbacks(uiUpdateCallbacks);
+        executeCallbacks(uiUpdateCallbacks, m);
         const newTab = get_uiCurrentTab();
         if ( newTab && ( newTab !== uiCurrentTab ) ) {
             uiCurrentTab = newTab;
