@@ -31,7 +31,7 @@
 #  ========== extensions ==============
 
 [submodule "extensions/deforum-for-automatic1111-webui"]
-    url = https://github.com/deforum-art/deforum-for-automatic1111-webu.git
+    url = https://github.com/deforum-art/deforum-for-automatic1111-webui.git
     path = extensions/deforum-for-automatic1111-webui
 
 [submodule "extensions/stable-diffusion-webui-images-browser"]
