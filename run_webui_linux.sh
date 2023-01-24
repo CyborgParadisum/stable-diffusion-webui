@@ -2,8 +2,8 @@
 # Activate conda environment
 current_env=$(conda info --envs | grep "*" | awk '{print $1}')
 is_not_env=0
-if [[ $current_env != "wd-web-ui" ]]; then
-  conda activate wd-web-ui
+if [[ $current_env != "sd-web-ui" ]]; then
+  conda activate sd-web-ui
   is_not_env=1
 fi
 # Pull the latest changes from the repo
