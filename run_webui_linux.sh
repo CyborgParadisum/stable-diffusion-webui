@@ -22,8 +22,3 @@ if ((is_not_env == 1)); then
   conda activate wd-web-ui
 fi
 
-work_dir="/root/stable-diffusion-webui/"
-cd ${work_dir}
-mkdir huggingface_cache
-export HF_HOME=${work_dir}/huggingface_cache
-python webui.py --listen --port 6006 --gradio-debug --disable-safe-unpickle
