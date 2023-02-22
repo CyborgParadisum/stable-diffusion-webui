@@ -39,3 +39,9 @@
     url = https://github.com/yfszzx/stable-diffusion-webui-images-browser.git
     path = extensions/stable-diffusion-webui-images-browser
 
+[submodule "extensions/sd-webui-controlnet"]
+	path = extensions/sd-webui-controlnet
+	url = https://github.com/Mikubill/sd-webui-controlnet.git
+[submodule "extensions/openpose-editor"]
+	path = extensions/openpose-editor
+	url = https://github.com/fkunn1326/openpose-editor.git
