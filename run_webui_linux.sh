@@ -15,10 +15,10 @@ cd ${work_dir}
 export HF_HOME=${work_dir}/huggingface_cache
 mkdir -p huggingface_cache
 export HF_HOME=${work_dir}/huggingface_cache
-python webui.py --listen --port 6006 --gradio-debug --disable-safe-unpickle
+python webui.py --listen --port 6006 --disable-safe-unpickle
 
 # Deactivate conda environment
 if ((is_not_env == 1)); then
-  conda activate wd-web-ui
+  conda activate sd-web-ui
 fi
 
