@@ -15,7 +15,7 @@ cd ${work_dir}
 export HF_HOME=${work_dir}/huggingface_cache
 mkdir -p huggingface_cache
 export HF_HOME=${work_dir}/huggingface_cache
-conda run -n web-ui --no-capture-output python webui.py \
+conda run -n sd-web-ui --no-capture-output python webui.py \
   --listen --port 6006 --disable-safe-unpickle
 
 
