@@ -36,3 +36,5 @@ notification.mp3
 /cache.json.lock
 
 huggingface_cache
+*.iml
+.idea
