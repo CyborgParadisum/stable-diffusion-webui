@@ -113,13 +113,13 @@ case "$gpu_info" in
         printf "Experimental support for Renoir: make sure to have at least 4GB of VRAM and 10GB of RAM or enable cpu mode: --use-cpu all --no-half"
         printf "\n%s\n" "${delimiter}"
     ;;
-    *) 
+    *)
     ;;
 esac
 if echo "$gpu_info" | grep -q "AMD" && [[ -z "${TORCH_COMMAND}" ]]
 then
     export TORCH_COMMAND="pip install torch torchvision --extra-index-url https://download.pytorch.org/whl/rocm5.2"
-fi  
+fi
 
 for preq in "${GIT}" "${python_cmd}"
 do
@@ -181,6 +181,6 @@ then
 else
     printf "\n%s\n" "${delimiter}"
     printf "Launching launch.py..."
-    printf "\n%s\n" "${delimiter}"      
+    printf "\n%s\n" "${delimiter}"
     exec "${python_cmd}" "${LAUNCH_SCRIPT}" "$@"
 fi
