@@ -15,9 +15,15 @@ cd ${work_dir}
 export HF_HOME=${work_dir}/huggingface_cache
 mkdir -p huggingface_cache
 export HF_HOME=${work_dir}/huggingface_cache
-conda run -n sd-web-ui --no-capture-output python webui.py \
+run="
+python webui.py \
   --listen --port 6006 --disable-safe-unpickle
-
+"
+if [ "$USE_CONDA" != "false" ];then
+  conda run -n sd-web-ui --no-capture-output $run
+else
+  $run
+fi
 
 # Deactivate conda environment
 #if ((is_not_env == 1)); then
