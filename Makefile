@@ -1,4 +1,5 @@
-ifneq ($(conda),false)
+#ifneq ($(conda),false)
+ifeq ($(filter $(conda) $(USE_CONDA), false),)
 	conda_env = sd-web-ui
 	conda_run = conda run -n $(conda_env) --no-capture-output
 endif
@@ -17,8 +18,7 @@ run:
 #	conda env create -f environment.yml
 #	conda env list
 install:
-	$(conda_run) pip install -r requirements.txt
-	#$(conda_run) pip install -r repositories/so_vits_svc/requirements-infer.txt
+	$(conda_run) bash install_linux.sh
 
 #download-model-moegoe:
 #	mkdir -p models
