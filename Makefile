@@ -43,6 +43,10 @@ download:
 			models/Stable-diffusion/chilloutmix_NiPrunedFp32Fix.safetensors ,\
 			https://huggingface.co/naonovn/chilloutmix_NiPrunedFp32Fix/resolve/main/chilloutmix_NiPrunedFp32Fix.safetensors)
 
+	$(call wget_if_not_exist, \
+			models/Lora/koreanDollLikeness_v10.safetensors ,\
+			https://huggingface.co/aimainia/koreanDollLikeness_v10/resolve/main/koreanDollLikeness_v10.safetensors)
+
 
 git_update:
 	git pull --recurse-submodules
