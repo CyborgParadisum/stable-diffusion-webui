@@ -44,6 +44,15 @@ download:
 			https://huggingface.co/naonovn/chilloutmix_NiPrunedFp32Fix/resolve/main/chilloutmix_NiPrunedFp32Fix.safetensors)
 
 	$(call wget_if_not_exist, \
+			models/Stable-diffusion/novelaifinal-pruned.vae.pt ,\
+			https://SuCicada:$(hf_token)@huggingface.co/SuCicada/stable-diffusion-models/resolve/main/novelaifinal-pruned.vae.pt)
+	$(call wget_if_not_exist, \
+			models/Stable-diffusion/novelaifinal-pruned.ckpt ,\
+			https://SuCicada:$(hf_token)@huggingface.co/SuCicada/stable-diffusion-models/resolve/main/novelaifinal-pruned.ckpt)
+
+
+	@# ======= Lora =======
+	$(call wget_if_not_exist, \
 			models/Lora/koreanDollLikeness_v10.safetensors ,\
 			https://huggingface.co/aimainia/koreanDollLikeness_v10/resolve/main/koreanDollLikeness_v10.safetensors)
 
