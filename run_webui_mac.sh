@@ -13,6 +13,7 @@ env_name="web-ui"
 work_dir=$(dirname "$0")
 cd $work_dir
 export HF_HOME=${work_dir}/huggingface_cache
+export PYTORCH_ENABLE_MPS_FALLBACK=1
 conda run -n sd-web-ui --no-capture-output python webui.py \
   --precision full --no-half --opt-split-attention-v1 --disable-nan-check \
 
