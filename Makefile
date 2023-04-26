@@ -50,12 +50,13 @@ download:
 			models/Stable-diffusion/novelaifinal-pruned.ckpt ,\
 			https://SuCicada:$(hf_token)@huggingface.co/SuCicada/stable-diffusion-models/resolve/main/novelaifinal-pruned.ckpt)
 
-
 	@# ======= Lora =======
 	$(call wget_if_not_exist, \
 			models/Lora/koreanDollLikeness_v10.safetensors ,\
 			https://huggingface.co/aimainia/koreanDollLikeness_v10/resolve/main/koreanDollLikeness_v10.safetensors)
-
+	$(call wget_if_not_exist, \
+			models/Lora/lain.safetensors ,\
+			https://civitai.com/api/download/models/34221)
 
 git_update:
 	git pull --recurse-submodules
