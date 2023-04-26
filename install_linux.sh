@@ -14,7 +14,7 @@ pip install timm==0.6.12
 cd repositories/CodeFormer && git checkout c5b4593074ba6214284d6acd5f1719b6c5d739af && cd -
 
 pip install --prefer-binary -r repositories/CodeFormer/requirements.txt
-pip install rich
+
 
 cd repositories/CodeFormer && python basicsr/setup.py develop && cd -
 
