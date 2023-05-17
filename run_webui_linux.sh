@@ -18,7 +18,8 @@ export HF_HOME=${work_dir}/huggingface_cache
 run="
 python webui.py \
   --listen --port 6006 --disable-safe-unpickle \
-  --enable-insecure-extension-access
+  --enable-insecure-extension-access \
+  $@
 "
 if [ "$USE_CONDA" != "false" ];then
   conda run -n sd-web-ui --no-capture-output $run

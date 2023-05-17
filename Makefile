@@ -12,6 +12,7 @@ else ifeq ($(UNAME_S),Darwin)
 endif
 
 run:
+	if [ ! -f "config.json" ]; then cp my_config.json config.json ; fi
 	bash $(run_sh)
 
 #init_conda:
@@ -36,27 +37,38 @@ endef
 #so_vits_svc_modules = $(so_vits_svc_dir)/_models
 download:
 	$(call wget_if_not_exist, \
-			models/Stable-diffusion/wd-1-4-anime_e1.ckpt ,\
-			https://huggingface.co/hakurei/waifu-diffusion-v1-4/resolve/main/wd-1-4-anime_e1.ckpt)
+			models/Stable-diffusion/mikapikazo-40000.ckpt ,\
+			https://huggingface.co/andite/mikapikazo-diffusion/resolve/main/mikapikazo-40000.ckpt)
+
+	#$(call wget_if_not_exist, \
+#			models/Stable-diffusion/wd-1-4-anime_e1.ckpt ,\
+#			https://huggingface.co/hakurei/waifu-diffusion-v1-4/resolve/main/wd-1-4-anime_e1.ckpt)
 
 	$(call wget_if_not_exist, \
 			models/Stable-diffusion/chilloutmix_NiPrunedFp32Fix.safetensors ,\
 			https://huggingface.co/naonovn/chilloutmix_NiPrunedFp32Fix/resolve/main/chilloutmix_NiPrunedFp32Fix.safetensors)
 
+#	$(call wget_if_not_exist, \
+#			models/Stable-diffusion/novelaifinal-pruned.vae.pt ,\
+#			https://SuCicada:$(hf_token)@huggingface.co/SuCicada/stable-diffusion-models/resolve/main/novelaifinal-pruned.vae.pt)
+#	$(call wget_if_not_exist, \
+#			models/Stable-diffusion/novelaifinal-pruned.ckpt ,\
+#			https://SuCicada:$(hf_token)@huggingface.co/SuCicada/stable-diffusion-models/resolve/main/novelaifinal-pruned.ckpt)
+
+	@# ======= VAE =======
 	$(call wget_if_not_exist, \
-			models/Stable-diffusion/novelaifinal-pruned.vae.pt ,\
-			https://SuCicada:$(hf_token)@huggingface.co/SuCicada/stable-diffusion-models/resolve/main/novelaifinal-pruned.vae.pt)
-	$(call wget_if_not_exist, \
-			models/Stable-diffusion/novelaifinal-pruned.ckpt ,\
-			https://SuCicada:$(hf_token)@huggingface.co/SuCicada/stable-diffusion-models/resolve/main/novelaifinal-pruned.ckpt)
+			models/VAE/animevae.pt ,\
+			https://huggingface.co/a1079602570/animefull-final-pruned/resolve/main/animevae.pt)
 
 	@# ======= Lora =======
 	$(call wget_if_not_exist, \
 			models/Lora/koreanDollLikeness_v10.safetensors ,\
 			https://huggingface.co/aimainia/koreanDollLikeness_v10/resolve/main/koreanDollLikeness_v10.safetensors)
-	$(call wget_if_not_exist, \
-			models/Lora/lain.safetensors ,\
-			https://civitai.com/api/download/models/34221)
+	#$(call wget_if_not_exist, \
+#			models/Lora/lain.safetensors ,\
+#			https://civitai.com/api/download/models/34221)
+
+
 
 git_update:
 	git pull --recurse-submodules
