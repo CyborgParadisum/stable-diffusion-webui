@@ -52,3 +52,6 @@
 [submodule "extensions/wd14-tagger"]
 	path = extensions/wd14-tagger
 	url = https://github.com/toriato/stable-diffusion-webui-wd14-tagger.git
+[submodule "extensions/additional-networks"]
+	path = extensions/additional-networks
+	url = https://github.com/kohya-ss/sd-webui-additional-networks

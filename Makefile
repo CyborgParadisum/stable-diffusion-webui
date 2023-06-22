@@ -36,9 +36,9 @@ endef
 #so_vits_svc_dir = repositories/so_vits_svc/
 #so_vits_svc_modules = $(so_vits_svc_dir)/_models
 download:
-	$(call wget_if_not_exist, \
-			models/Stable-diffusion/mikapikazo-40000.ckpt ,\
-			https://huggingface.co/andite/mikapikazo-diffusion/resolve/main/mikapikazo-40000.ckpt)
+	#$(call wget_if_not_exist, \
+#			models/Stable-diffusion/mikapikazo-40000.ckpt ,\
+#			https://huggingface.co/andite/mikapikazo-diffusion/resolve/main/mikapikazo-40000.ckpt)
 
 	#$(call wget_if_not_exist, \
 #			models/Stable-diffusion/wd-1-4-anime_e1.ckpt ,\
