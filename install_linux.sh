@@ -22,3 +22,5 @@ cd repositories/CodeFormer && python basicsr/setup.py develop && cd -
 pip uninstall basicsr -y && pip install basicsr
 pip uninstall basicsr -y && pip install basicsr
 
+# for stable-diffusion-webui-rembg
+pip install rembg

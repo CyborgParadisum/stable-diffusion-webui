@@ -13,7 +13,7 @@ endif
 
 run:
 	if [ ! -f "config.json" ]; then cp my_config.json config.json ; fi
-	bash $(run_sh)
+	bash $(run_sh) $(opt)
 
 #init_conda:
 #	conda env create -f environment.yml
@@ -47,7 +47,9 @@ download:
 	$(call wget_if_not_exist, \
 			models/Stable-diffusion/chilloutmix_NiPrunedFp32Fix.safetensors ,\
 			https://huggingface.co/naonovn/chilloutmix_NiPrunedFp32Fix/resolve/main/chilloutmix_NiPrunedFp32Fix.safetensors)
-
+	$(call wget_if_not_exist, \
+			models/Stable-diffusion/mix-pro-v4.safetensors ,\
+			"https://civitai.com/api/download/models/34559?type=Model&format=SafeTensor&size=full&fp=fp16" )
 #	$(call wget_if_not_exist, \
 #			models/Stable-diffusion/novelaifinal-pruned.vae.pt ,\
 #			https://SuCicada:$(hf_token)@huggingface.co/SuCicada/stable-diffusion-models/resolve/main/novelaifinal-pruned.vae.pt)
