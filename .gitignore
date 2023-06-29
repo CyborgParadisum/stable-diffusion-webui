@@ -43,3 +43,7 @@ notification.mp3
 huggingface_cache
 *.iml
 .idea
+.env*
+extensions/additional-networks/hashes.json.lock
+deploy/runpod/README.md
+configs/lora.txt

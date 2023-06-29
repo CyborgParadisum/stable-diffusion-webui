@@ -55,3 +55,9 @@
 [submodule "extensions/additional-networks"]
 	path = extensions/additional-networks
 	url = https://github.com/kohya-ss/sd-webui-additional-networks
+[submodule "extensions/lora-block-weight"]
+	path = extensions/lora-block-weight
+	url = https://github.com/hako-mikan/sd-webui-lora-block-weight
+[submodule "extensions/supermerger"]
+	path = extensions/supermerger
+	url = https://github.com/hako-mikan/sd-webui-supermerger

@@ -1,4 +1,8 @@
 #ifneq ($(conda),false)
+ifneq ($(wildcard .env),)
+	include .env
+endif
+
 ifeq ($(filter $(conda) $(USE_CONDA), false),)
 	conda_env = sd-web-ui
 	conda_run = conda run -n $(conda_env) --no-capture-output
@@ -70,7 +74,13 @@ download:
 #			models/Lora/lain.safetensors ,\
 #			https://civitai.com/api/download/models/34221)
 
-
+backup_lora:
+	#ls -l .env
+	#realpath .env
+	#cat ./.env | xargs -I {} export {}
+	$(conda_run) bash -c "set -a; source .env;set +a; \
+		python tools/lora_s3.py \
+		backup --s3_bucket $(S3_BUCKET) --s3_prefix $(S3_PREFIX)"
 
 git_update:
 	git pull --recurse-submodules

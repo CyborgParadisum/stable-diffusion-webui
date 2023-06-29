@@ -18,13 +18,24 @@ pip uninstall basicsr -y
 pip install basicsr 
 ```
 
+## for add new git submodule
+
 ```bash
 git submodule add https://github.com/Mikubill/sd-webui-controlnet.git extensions/sd-webui-controlnet/ 
 git submodule add https://github.com/fkunn1326/openpose-editor.git extensions/openpose-editor/
 
 git submodule add https://github.com/AUTOMATIC1111/stable-diffusion-webui-rembg.git extensions/rembg/
 git submodule add https://github.com/toriato/stable-diffusion-webui-wd14-tagger.git extensions/wd14-tagger/
+
+git submodule add https://github.com/kohya-ss/sd-webui-additional-networks extensions/additional-networks
+git submodule add https://github.com/hako-mikan/sd-webui-lora-block-weight extensions/lora-block-weight
+git submodule add https://github.com/hako-mikan/sd-webui-supermerger extensions/supermerger
 ```
 
+
+## for my Linux
+```bash
+pip3 install torch==2.0.1 torchvision==0.15.2 --index-url https://download.pytorch.org/whl/cu118
+```
 
 https://kurokumasoft.com/2023/02/16/stable-diffusion-controlnet/

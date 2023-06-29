@@ -405,6 +405,12 @@ def webui():
             prevent_thread_lock=True,
             allowed_paths=cmd_opts.gradio_allowed_path,
         )
+
+        print("========================================")
+        print()
+        print(share_url)
+        print()
+        print("========================================")
         if cmd_opts.add_stop_route:
             app.add_route("/_stop", stop_route, methods=["POST"])
 
