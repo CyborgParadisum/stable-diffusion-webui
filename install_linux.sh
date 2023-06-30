@@ -24,10 +24,10 @@ pip uninstall basicsr -y && pip install basicsr
 
 # for stable-diffusion-webui-rembg
 pip install rembg
-
 pip install boto3 python-dotenv colorama
-
-
 
 # for additional-networks
 sh tools/additional_networks_lora.sh
+
+# for supermerger
+pip install scikit-learn
