@@ -8,7 +8,7 @@ cd /workspace
 if [ ! -d stable-diffusion-webui ]; then
   git clone https://github.com/CyborgParadisum/stable-diffusion-webui.git -b sucicada --recursive
 fi
-cd stable-diffusion-webui
+cd /workspace/stable-diffusion-webui
 
 export USE_CONDA=false
 USE_CONDA=false make install

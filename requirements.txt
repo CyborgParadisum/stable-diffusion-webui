@@ -17,7 +17,7 @@ omegaconf
 
 piexif
 psutil
-pytorch_lightning
+pytorch_lightning==1.9.4
 realesrgan
 requests
 resize-right

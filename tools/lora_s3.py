@@ -156,9 +156,11 @@ def backup():
     directory = project_root / "models/Lora"
     # Get all file names in the directory
     file_names = os.listdir(directory)
+    file_names = [file for file in file_names if file.endswith(".safetensors")]
+
     # Print the file names
-    # for file_name in file_names:
-    #     upload(directory, file_name)
+    for file_name in file_names:
+        upload(directory, file_name)
 
     with open(lora_txt, "w") as f:
         print(file_names)
