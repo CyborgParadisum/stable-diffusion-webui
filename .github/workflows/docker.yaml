@@ -2,9 +2,9 @@ name: Docker Image
 
 
 on:
-  push:
-    branches:
-      - master
+#  push:
+#    branches:
+#      - master
   release:
     types:
       - published
@@ -44,4 +44,6 @@ jobs:
           context: deploy/runpod/
           file: deploy/runpod/Dockerfile
           push: true
-          tags: ${{ secrets.DOCKERHUB_REPO }}/${{ secrets.DOCKERHUB_IMG }}:latest
+          tags: |
+            ${{ secrets.DOCKERHUB_REPO }}/${{ secrets.DOCKERHUB_IMG }}:${{ github.event.release.tag_name }}
+            ${{ secrets.DOCKERHUB_REPO }}/${{ secrets.DOCKERHUB_IMG }}:latest
