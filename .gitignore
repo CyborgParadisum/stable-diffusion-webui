@@ -46,4 +46,4 @@ huggingface_cache
 .env*
 extensions/additional-networks/hashes.json.lock
 deploy/runpod/README.md
-configs/lora.txt
+configs/lora.json

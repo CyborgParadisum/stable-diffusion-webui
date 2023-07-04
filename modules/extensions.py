@@ -62,8 +62,11 @@ class Extension:
                 self.remote = next(repo.remote().urls, None)
                 commit = repo.head.commit
                 self.commit_date = commit.committed_date
-                if repo.active_branch:
-                    self.branch = repo.active_branch.name
+                try:
+                    if repo.active_branch:
+                        self.branch = repo.active_branch.name
+                except TypeError:
+                    pass
                 self.commit_hash = commit.hexsha
                 self.version = self.commit_hash[:8]
 
