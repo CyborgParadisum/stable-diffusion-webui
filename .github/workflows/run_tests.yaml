@@ -2,7 +2,7 @@ name: Run basic features tests on CPU with empty SD model
 
 on:
 #   - push
-#   - pull_request
+   - pull_request
 
 jobs:
   test:

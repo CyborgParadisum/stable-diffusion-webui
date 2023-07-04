@@ -2,7 +2,7 @@ name: Run Linting/Formatting on Pull Requests
 
 on:
 #  - push
-#  - pull_request
+  - pull_request
 
 jobs:
   lint-python:
