@@ -30,6 +30,8 @@ git submodule add https://github.com/toriato/stable-diffusion-webui-wd14-tagger.
 git submodule add https://github.com/kohya-ss/sd-webui-additional-networks extensions/additional-networks
 git submodule add https://github.com/hako-mikan/sd-webui-lora-block-weight extensions/lora-block-weight
 git submodule add https://github.com/hako-mikan/sd-webui-supermerger extensions/supermerger
+git submodule add https://github.com/KohakuBlueleaf/a1111-sd-webui-lycoris extensions/lycoris
+git submodule add https://github.com/a2569875/stable-diffusion-webui-composable-lora extensions/composable-lora
 ```
 
 

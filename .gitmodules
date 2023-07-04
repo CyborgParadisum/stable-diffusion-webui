@@ -61,3 +61,9 @@
 [submodule "extensions/supermerger"]
 	path = extensions/supermerger
 	url = https://github.com/hako-mikan/sd-webui-supermerger
+[submodule "extensions/lycoris"]
+	path = extensions/lycoris
+	url = https://github.com/KohakuBlueleaf/a1111-sd-webui-lycoris
+[submodule "extensions/composable-lora"]
+	path = extensions/composable-lora
+	url = https://github.com/a2569875/stable-diffusion-webui-composable-lora
