@@ -16,7 +16,9 @@ export HF_HOME=${work_dir}/huggingface_cache
 export PYTORCH_ENABLE_MPS_FALLBACK=1
 conda run -n sd-web-ui --no-capture-output python webui.py \
   --precision full --no-half --opt-split-attention-v1 --disable-nan-check \
+  --loglevel DEBUG \
   $@
+
 
 # Deactivate conda environment
 #if ((is_not_env == 1)); then

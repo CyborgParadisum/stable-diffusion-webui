@@ -45,7 +45,7 @@ git submodule add https://github.com/deforum-art/sd-webui-deforum extensions/def
 
 ## for my Linux
 ```bash
-pip3 install torch==2.0.1 torchvision==0.15.2 --index-url https://download.pytorch.org/whl/cu118
+pip3 install torch==2.0.1 torchvision==0.15.2 torchaudio==2.0.2 --index-url https://download.pytorch.org/whl/cu118
 ```
 
 https://kurokumasoft.com/2023/02/16/stable-diffusion-controlnet/
@@ -58,4 +58,7 @@ git rm -f extensions/wd14-tagger/
 
 git submodule deinit -f extensions/deforum-for-automatic1111-webui
 git rm -f extensions/deforum-for-automatic1111-webui
+
+git submodule deinit -f extensions/lycoris
+git rm -f extensions/lycoris
 ``` 

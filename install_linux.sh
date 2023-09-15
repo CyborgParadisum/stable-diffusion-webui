@@ -35,3 +35,4 @@ pip install scikit-learn
 
 # v1.6.0
 pip install -r repositories/generative-models/requirements/pt2.txt
+pip install -r requirements_versions.txt

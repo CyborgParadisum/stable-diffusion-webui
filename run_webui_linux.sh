@@ -20,6 +20,7 @@ python webui.py \
   --listen --port 6006 --disable-safe-unpickle \
   --enable-insecure-extension-access \
   --disable-nan-check \
+  --loglevel DEBUG \
   $@
 "
 if [ "$USE_CONDA" != "false" ];then
