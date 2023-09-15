@@ -63,4 +63,4 @@ RUN bash /init.sh
 #ENV RUNPOD_DEBUG_LEVEL=INFO
 #CMD python -u /rp_handler.py --model_tag="$MODEL_TAG"
 CMD cd /workspace/stable-diffusion-webui && \
-    make download
+    make download && tail -f /dev/null

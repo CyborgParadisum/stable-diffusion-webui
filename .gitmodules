@@ -9,9 +9,9 @@
     path = repositories/taming-transformers
 
 [submodule "repositories/CodeFormer"]
-    url = https://github.com/sczhou/CodeFormer.git
+	url = https://github.com/SuCicada/CodeFormer.git
     path = repositories/CodeFormer
-    batch = c5b4593074ba6214284d6acd5f1719b6c5d739af
+;     batch = c5b4593074ba6214284d6acd5f1719b6c5d739af
 
 [submodule "repositories/BLIP"]
     url = https://github.com/salesforce/BLIP.git
@@ -29,11 +29,11 @@
     url = https://github.com/crowsonkb/k-diffusion.git
     path = repositories/k-diffusion
 
-#  ========== extensions ==============
+[submodule "repositories/generative-models"]
+	path = repositories/generative-models
+	url = https://github.com/Stability-AI/generative-models.git
 
-[submodule "extensions/deforum-for-automatic1111-webui"]
-    url = https://github.com/deforum-art/deforum-for-automatic1111-webui.git
-    path = extensions/deforum-for-automatic1111-webui
+#  ========== extensions ==============
 
 [submodule "extensions/stable-diffusion-webui-images-browser"]
     url = https://github.com/yfszzx/stable-diffusion-webui-images-browser.git
@@ -49,9 +49,6 @@
 [submodule "extensions/rembg"]
 	path = extensions/rembg
 	url = https://github.com/AUTOMATIC1111/stable-diffusion-webui-rembg.git
-[submodule "extensions/wd14-tagger"]
-	path = extensions/wd14-tagger
-	url = https://github.com/toriato/stable-diffusion-webui-wd14-tagger.git
 [submodule "extensions/additional-networks"]
 	path = extensions/additional-networks
 	url = https://github.com/kohya-ss/sd-webui-additional-networks
@@ -67,3 +64,8 @@
 [submodule "extensions/composable-lora"]
 	path = extensions/composable-lora
 	url = https://github.com/a2569875/stable-diffusion-webui-composable-lora
+[submodule "extensions/deforum"]
+	path = extensions/deforum
+	url = https://github.com/deforum-art/sd-webui-deforum
+[submodule "https://github.com/SuCicada/CodeFormer.git"]
+	url = repositories/CodeFormer
