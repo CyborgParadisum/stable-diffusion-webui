@@ -64,5 +64,6 @@
 [submodule "extensions/deforum"]
 	path = extensions/deforum
 	url = https://github.com/deforum-art/sd-webui-deforum
-[submodule "https://github.com/SuCicada/CodeFormer.git"]
-	url = repositories/CodeFormer
+[submodule "extensions/tagger"]
+	path = extensions/tagger
+	url = https://github.com/picobyte/stable-diffusion-webui-wd14-tagger.git

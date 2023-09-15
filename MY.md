@@ -40,6 +40,7 @@ git submodule add https://github.com/KohakuBlueleaf/a1111-sd-webui-lycoris exten
 git submodule add https://github.com/a2569875/stable-diffusion-webui-composable-lora extensions/composable-lora
 
 git submodule add https://github.com/deforum-art/sd-webui-deforum extensions/deforum
+git submodule add https://github.com/picobyte/stable-diffusion-webui-wd14-tagger.git extensions/tagger
 ```
 
 
