@@ -17,7 +17,7 @@ endif
 
 run:
 	if [ ! -f "config.json" ]; then cp my_config.json config.json ; fi
-	bash $(run_sh) $(opt)
+	bash $(run_sh) --api $(args)
 
 #init_conda:
 #	conda env create -f environment.yml
