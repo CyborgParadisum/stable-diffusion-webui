@@ -1,11 +1,43 @@
-import os
-import shutil
+from __future__ import annotations
+
 import importlib
+import logging
+import os
+from typing import TYPE_CHECKING
 from urllib.parse import urlparse
+
+import torch
 
 from modules import shared
 from modules.upscaler import Upscaler, UpscalerLanczos, UpscalerNearest, UpscalerNone
-from modules.paths import script_path, models_path
+
+if TYPE_CHECKING:
+    import spandrel
+
+logger = logging.getLogger(__name__)
+
+
+def load_file_from_url(
+    url: str,
+    *,
+    model_dir: str,
+    progress: bool = True,
+    file_name: str | None = None,
+) -> str:
+    """Download a file from `url` into `model_dir`, using the file present if possible.
+
+    Returns the path to the downloaded file.
+    """
+    os.makedirs(model_dir, exist_ok=True)
+    if not file_name:
+        parts = urlparse(url)
+        file_name = os.path.basename(parts.path)
+    cached_file = os.path.abspath(os.path.join(model_dir, file_name))
+    if not os.path.exists(cached_file):
+        print(f'Downloading: "{url}" to {cached_file}\n')
+        from torch.hub import download_url_to_file
+        download_url_to_file(url, cached_file, progress=progress)
+    return cached_file
 
 
 def load_models(model_path: str, model_url: str = None, command_path: str = None, ext_filter=None, download_name=None, ext_blacklist=None) -> list:
@@ -46,9 +78,7 @@ def load_models(model_path: str, model_url: str = None, command_path: str = None
 
         if model_url is not None and len(output) == 0:
             if download_name is not None:
-                from basicsr.utils.download_util import load_file_from_url
-                dl = load_file_from_url(model_url, places[0], True, download_name)
-                output.append(dl)
+                output.append(load_file_from_url(model_url, model_dir=places[0], file_name=download_name))
             else:
                 output.append(model_url)
 
@@ -59,60 +89,12 @@ def load_models(model_path: str, model_url: str = None, command_path: str = None
 
 
 def friendly_name(file: str):
-    if "http" in file:
+    if file.startswith("http"):
         file = urlparse(file).path
 
     file = os.path.basename(file)
     model_name, extension = os.path.splitext(file)
     return model_name
-
-
-def cleanup_models():
-    # This code could probably be more efficient if we used a tuple list or something to store the src/destinations
-    # and then enumerate that, but this works for now. In the future, it'd be nice to just have every "model" scaler
-    # somehow auto-register and just do these things...
-    root_path = script_path
-    src_path = models_path
-    dest_path = os.path.join(models_path, "Stable-diffusion")
-    move_files(src_path, dest_path, ".ckpt")
-    move_files(src_path, dest_path, ".safetensors")
-    src_path = os.path.join(root_path, "ESRGAN")
-    dest_path = os.path.join(models_path, "ESRGAN")
-    move_files(src_path, dest_path)
-    src_path = os.path.join(models_path, "BSRGAN")
-    dest_path = os.path.join(models_path, "ESRGAN")
-    move_files(src_path, dest_path, ".pth")
-    src_path = os.path.join(root_path, "gfpgan")
-    dest_path = os.path.join(models_path, "GFPGAN")
-    move_files(src_path, dest_path)
-    src_path = os.path.join(root_path, "SwinIR")
-    dest_path = os.path.join(models_path, "SwinIR")
-    move_files(src_path, dest_path)
-    src_path = os.path.join(root_path, "repositories/latent-diffusion/experiments/pretrained_models/")
-    dest_path = os.path.join(models_path, "LDSR")
-    move_files(src_path, dest_path)
-
-
-def move_files(src_path: str, dest_path: str, ext_filter: str = None):
-    try:
-        os.makedirs(dest_path, exist_ok=True)
-        if os.path.exists(src_path):
-            for file in os.listdir(src_path):
-                fullpath = os.path.join(src_path, file)
-                if os.path.isfile(fullpath):
-                    if ext_filter is not None:
-                        if ext_filter not in file:
-                            continue
-                    print(f"Moving {file} from {src_path} to {dest_path}.")
-                    try:
-                        shutil.move(fullpath, dest_path)
-                    except Exception:
-                        pass
-            if len(os.listdir(src_path)) == 0:
-                print(f"Removing empty folder: {src_path}")
-                shutil.rmtree(src_path, True)
-    except Exception:
-        pass
 
 
 def load_upscalers():
@@ -128,7 +110,7 @@ def load_upscalers():
             except Exception:
                 pass
 
-    datas = []
+    data = []
     commandline_options = vars(shared.cmd_opts)
 
     # some of upscaler classes will not go away after reloading their modules, and we'll end
@@ -147,10 +129,41 @@ def load_upscalers():
         scaler = cls(commandline_model_path)
         scaler.user_path = commandline_model_path
         scaler.model_download_path = commandline_model_path or scaler.model_path
-        datas += scaler.scalers
+        data += scaler.scalers
 
     shared.sd_upscalers = sorted(
-        datas,
+        data,
         # Special case for UpscalerNone keeps it at the beginning of the list.
         key=lambda x: x.name.lower() if not isinstance(x.scaler, (UpscalerNone, UpscalerLanczos, UpscalerNearest)) else ""
     )
+
+
+def load_spandrel_model(
+    path: str | os.PathLike,
+    *,
+    device: str | torch.device | None,
+    prefer_half: bool = False,
+    dtype: str | torch.dtype | None = None,
+    expected_architecture: str | None = None,
+) -> spandrel.ModelDescriptor:
+    import spandrel
+    model_descriptor = spandrel.ModelLoader(device=device).load_from_file(str(path))
+    if expected_architecture and model_descriptor.architecture != expected_architecture:
+        logger.warning(
+            f"Model {path!r} is not a {expected_architecture!r} model (got {model_descriptor.architecture!r})",
+        )
+    half = False
+    if prefer_half:
+        if model_descriptor.supports_half:
+            model_descriptor.model.half()
+            half = True
+        else:
+            logger.info("Model %s does not support half precision, ignoring --half", path)
+    if dtype:
+        model_descriptor.model.to(dtype=dtype)
+    model_descriptor.model.eval()
+    logger.debug(
+        "Loaded %s from %s (device=%s, half=%s, dtype=%s)",
+        model_descriptor, path, device, half, dtype,
+    )
+    return model_descriptor
