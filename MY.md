@@ -32,6 +32,8 @@ git submodule add https://github.com/hako-mikan/sd-webui-lora-block-weight exten
 git submodule add https://github.com/hako-mikan/sd-webui-supermerger extensions/supermerger
 git submodule add https://github.com/KohakuBlueleaf/a1111-sd-webui-lycoris extensions/lycoris
 git submodule add https://github.com/a2569875/stable-diffusion-webui-composable-lora extensions/composable-lora
+
+git submodule add https://github.com/AUTOMATIC1111/stable-diffusion-webui-assets repositories/stable-diffusion-webui-assets
 ```
 
 

@@ -3,5 +3,7 @@
     "sd_model_checkpoint",
     "sd_vae",
     "CLIP_stop_at_last_layers"
-  ]
+  ],
+  "auto_launch_browser": "Disable",
+  "js_modal_lightbox_gamepad": false
 }
