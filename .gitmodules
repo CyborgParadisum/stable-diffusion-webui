@@ -28,6 +28,9 @@
 [submodule "repositories/k-diffusioni"]
     url = https://github.com/crowsonkb/k-diffusion.git
     path = repositories/k-diffusion
+[submodule "repositories/stable-diffusion-webui-assets"]
+	path = repositories/stable-diffusion-webui-assets
+	url = https://github.com/AUTOMATIC1111/stable-diffusion-webui-assets
 
 [submodule "repositories/generative-models"]
 	path = repositories/generative-models

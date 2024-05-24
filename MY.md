@@ -41,6 +41,8 @@ git submodule add https://github.com/a2569875/stable-diffusion-webui-composable-
 
 git submodule add https://github.com/deforum-art/sd-webui-deforum extensions/deforum
 git submodule add https://github.com/picobyte/stable-diffusion-webui-wd14-tagger.git extensions/tagger
+
+git submodule add https://github.com/AUTOMATIC1111/stable-diffusion-webui-assets repositories/stable-diffusion-webui-assets
 ```
 
 
