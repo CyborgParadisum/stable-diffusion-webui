@@ -49,3 +49,4 @@ huggingface_cache
 extensions/additional-networks/hashes.json.lock
 deploy/runpod/README.md
 configs/lora.json
+/.yarn/
