@@ -1,6 +1,6 @@
 #!/bin/bash
 pip install -r requirements.txt
-pip install --upgrade fastapi==0.90.1
+#pip install --upgrade fastapi==0.90.1
 
 
 pip install git+https://github.com/mlfoundations/open_clip.git@bb6e834e9c70d9c27d0dc3ecedeebeaeb1ffad6b
@@ -33,6 +33,9 @@ sh tools/additional_networks_lora.sh
 # for supermerger
 pip install scikit-learn
 
-# v1.6.0
-pip install -r repositories/generative-models/requirements/pt2.txt
+
+# v1.9.x
+# generative-models 的依赖链只能支持 torch 2.0.1
+#pip install torch==2.1.2 torchaudio torchvision
 pip install -r requirements_versions.txt
+pip install -r repositories/generative-models/requirements/pt2.txt
