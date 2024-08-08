@@ -49,7 +49,7 @@ git submodule add https://github.com/AUTOMATIC1111/stable-diffusion-webui-assets
 ## for my Linux
 ```bash
 pip3 install torch==2.0.1 torchvision==0.15.2 torchaudio==2.0.2 --index-url https://download.pytorch.org/whl/cu118
-pip3 install -U xformers --index-url https://download.pytorch.org/whl/cu121
+pip3 install -U xformers --index-url https://download.pytorch.org/whl/cu118
 ```
 
 https://kurokumasoft.com/2023/02/16/stable-diffusion-controlnet/

@@ -14,21 +14,24 @@ cd ${work_dir}
 
 export HF_HOME=${work_dir}/huggingface_cache
 mkdir -p huggingface_cache
-export HF_HOME=${work_dir}/huggingface_cache
+#export HF_HOME=${work_dir}/huggingface_cache
 run="
 python webui.py \
-  --listen --port 6006 --disable-safe-unpickle \
+  --listen --port 17860 --disable-safe-unpickle \
+  --skip-version-check \
   --enable-insecure-extension-access \
   --disable-nan-check \
-  --loglevel DEBUG \
-  $@
+  $*
 "
+
 if [ "$USE_CONDA" != "false" ];then
-  conda run -n sd-web-ui --no-capture-output $run
+  cmd="conda run -n sd-web-ui --no-capture-output $run"
 else
-  $run
+  cmd=$run
 fi
 
+echo "Running: $cmd"
+exec $cmd
 # Deactivate conda environment
 #if ((is_not_env == 1)); then
 #  conda activate sd-web-ui

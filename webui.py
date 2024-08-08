@@ -10,6 +10,7 @@ from modules import initialize
 startup_timer = timer.startup_timer
 startup_timer.record("launcher")
 
+initialize_util.fix_pytorch_lightning()
 initialize.imports()
 
 initialize.check_versions()

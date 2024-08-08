@@ -39,3 +39,7 @@ pip install scikit-learn
 #pip install torch==2.1.2 torchaudio torchvision
 pip install -r requirements_versions.txt
 pip install -r repositories/generative-models/requirements/pt2.txt
+
+pip install xformers --index-url https://download.pytorch.org/whl/cu118
+
+ln -sf ../../../../models/Lora extensions/additional-networks/models/lora/Lora

@@ -18,8 +18,8 @@ endif
 run:
 	if [ ! -f "config.json" ]; then cp my_config.json config.json ; fi
 	bash $(run_sh) --api \
-		--loglevel DEBUG \
 		$(args)
+		-#-loglevel DEBUG \
 
 #init_conda:
 #	conda env create -f environment.yml
@@ -92,3 +92,7 @@ git_update:
 #	git submodule update --init --recursive
 
 
+docker-run-local:
+	cd deploy/local && \
+		docker-compose down && \
+		docker-compose up -d

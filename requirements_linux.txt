@@ -29,3 +29,13 @@ torchdiffeq==0.2.3
 torchsde==0.2.6
 transformers==4.30.2
 pillow-avif-plugin==1.4.3
+
+# controlnet
+numexpr
+diffusers
+controlnet_aux>=0.0.9
+typing_extensions
+sniffio
+uvicorn
+semantic_version
+attrs

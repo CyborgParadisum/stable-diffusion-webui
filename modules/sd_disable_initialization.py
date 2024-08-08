@@ -65,7 +65,9 @@ class DisableInitialization(ReplaceHelper):
             return self.create_model_and_transforms(*args, pretrained=None, **kwargs)
 
         def CLIPTextModel_from_pretrained(pretrained_model_name_or_path, *model_args, **kwargs):
-            res = self.CLIPTextModel_from_pretrained(None, *model_args, config=pretrained_model_name_or_path, state_dict={}, **kwargs)
+            print(f"CLIPTextModel_from_pretrained: {pretrained_model_name_or_path}")
+            # res = self.CLIPTextModel_from_pretrained(None, *model_args, config=pretrained_model_name_or_path, state_dict={}, **kwargs)
+            res = self.CLIPTextModel_from_pretrained(pretrained_model_name_or_path, *model_args, config=pretrained_model_name_or_path, state_dict={}, **kwargs)
             res.name_or_path = pretrained_model_name_or_path
             return res
 
