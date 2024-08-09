@@ -1,5 +1,7 @@
 services:
   stable-diffusion-webui:
+#    user: "1000:1000"
+    container_name: stable-diffusion-webui
 #    image: nvidia/cuda:12.2.0-base-ubuntu22.04
     image: sucicada/cuda-12.2.0-base-ubuntu22.04-runtime
     build:
@@ -9,7 +11,7 @@ services:
     restart: unless-stopped
     working_dir: /app
     volumes:
-      - /home/peng/miniconda3:/home/peng/miniconda3
+      - /home/peng/miniconda3:/home/peng/miniconda3:ro
       - ./entrypoint.sh:/entrypoint.sh
       - ../../:/app/
     command: make run
