@@ -23,31 +23,49 @@
 #     print(requirement)
 import pathlib
 from pprint import pprint
-
-import pkg_resources
+import pathlib
+from pprint import pprint
+from importlib.metadata import version, distributions
+from importlib.resources import files
 from pathlib import Path
+from typing import List
 
-installed_packages: pkg_resources.WorkingSet = pkg_resources.working_set
 project_path = Path(__file__).parent.parent
-requirements_txt_path = project_path / "requirements.txt"
+output = project_path / "requirements_linux_version.txt"
+
+if output.exists():
+    output.write_text("")
+
+
+def get_installed_packages() -> dict:
+    return {dist.metadata["Name"].lower(): dist.version for dist in distributions()}
+
+
+def get_requirements_version(requirements_txt_path: Path) -> List[str]:
+    installed_packages = get_installed_packages()
+    requirements = []
+
+    with open(requirements_txt_path) as requirements_txt:
+        for line in requirements_txt:
+            line = line.strip()
+            if line and not line.startswith('#'):
+                package_name = line.split('==')[0].lower()
+                if package_name in installed_packages:
+                    requirements.append(f"{package_name}=={installed_packages[package_name]}")
+                else:
+                    requirements.append("")
+
+    return requirements
+
 
 requirements = []
-with open(requirements_txt_path) as requirements_txt:
-    for requirement in pkg_resources.parse_requirements(requirements_txt):
-        requirement: pkg_resources.Requirement
-        requirements.append(requirement.project_name)
-        # str(requirement)
+for req_file in ["requirements.txt", "requirements_linux.txt", "requirements_versions.txt"]:
+    req_path = project_path / req_file
+    if req_path.exists():
+        requirements.extend(get_requirements_version(req_path))
 
-res = [""] * len(requirements)
-
-for package in installed_packages:
-    package: pkg_resources.DistInfoDistribution
-    if package.project_name in requirements:
-        i = requirements.index(package.project_name)
-        # res.append(f"{package.project_name}=={package.version}")
-        res[i] = f"{package.project_name}=={package.version}"
-pprint(res)
-
-with open(project_path / "requirements_mac.txt","w") as requirements_mac_txt:
-    for requirement in res:
-        requirements_mac_txt.write(requirement + "\n")
+with open(output, "a") as requirements_version_txt:
+    requirements = list(set(req for req in requirements if req))
+    for requirement_str in requirements:
+        print(requirement_str)
+        requirements_version_txt.write(requirement_str + "\n")
